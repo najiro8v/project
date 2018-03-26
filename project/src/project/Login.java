@@ -99,6 +99,9 @@ public void ImagenesMy(String cadena)
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
         });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -187,6 +190,10 @@ public void ImagenesMy(String cadena)
         register registroN=new register();
         
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+       jLabel5.setForeground(Color.white);
+    }//GEN-LAST:event_jLabel5MouseEntered
 
     /**
      * @param args the command line arguments
