@@ -99,6 +99,12 @@ public void ImagenesMy(String cadena)
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel5MouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -187,6 +193,19 @@ public void ImagenesMy(String cadena)
         register registroN=new register();
         
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        jLabel5.setOpaque(true);
+        jLabel5.setForeground(Color.white);
+        jLabel5.setBackground(Color.black);
+                
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+        jLabel5.setOpaque(true);
+        Color r=new Color(51,153,255);
+        jLabel5.setForeground(r);
+    }//GEN-LAST:event_jLabel5MouseExited
 
     /**
      * @param args the command line arguments
