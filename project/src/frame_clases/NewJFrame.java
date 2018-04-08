@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package frame_clases;
-
+import project.hilosProgresivo;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
  * @author reyna
  */
 public class NewJFrame extends javax.swing.JFrame {
-
+    hilosProgresivo hilo=new hilosProgresivo();
     /**
      * Creates new form NewJFrame
      */
@@ -78,6 +78,8 @@ public class NewJFrame extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jProgressBar1.setForeground(new java.awt.Color(204, 0, 0));
 
         jLabel4.setText("Usuario");
 
@@ -191,7 +193,8 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+          jProgressBar1.setVisible(true);
+          hilo.start();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
