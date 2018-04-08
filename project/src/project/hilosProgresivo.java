@@ -4,18 +4,19 @@
  * and open the template in the editor.
  */
 package project;
-
 import frame_clases.NewJFrame;
+import javax.swing.JProgressBar;
 
 /**
  *
  * @author casa
  */
-public class project {
-     public static void main(String[] args){
-         System.out.println("45");
-         NewJFrame a=new NewJFrame();
-         a.setVisible(true);
-     }
-    
+public class hilosProgresivo extends Thread {
+   
+    public void run()
+    {
+        for(int x=0;x<100;x+=10){
+            NewJFrame.jProgressBar1.setValue(x);
+        }
+    }
 }
