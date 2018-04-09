@@ -13,7 +13,7 @@ import frame_clases.NewJFrame;
  */
 public class project {
      public static void main(String[] args){
-         System.out.println("45");
+         
          NewJFrame a=new NewJFrame();
          a.setVisible(true);
      }
