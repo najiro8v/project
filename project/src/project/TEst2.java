@@ -24,7 +24,7 @@ File archivo=new File("m.txt");
         ArrayList <Dueño> tempA=new ArrayList<>();
         try {
             archivo.createNewFile();
-            salida=new FileOutputStream(archivo);
+            salida=new FileOutputStream(archivo,true);
             reader=new ObjectOutputStream(salida);
             temop=new Dueño();
             reader.writeObject(temop);
