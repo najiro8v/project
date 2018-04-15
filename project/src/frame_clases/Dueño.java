@@ -13,9 +13,10 @@ public class Dueño {
     private Mascota mascota;
     private int Edad;
     private String Nombre_Real,Fecha_de_Nacimiento,Contraseña,Nombre_de_Usuario;
-    public Dueño(Mascota mascota1,int edad, String nombre_real,String fecha_de_nacimiento,String contraseña,String nombre_de_usuario)
+    public Dueño(){}
+    public Dueño(int edad, String nombre_real,String fecha_de_nacimiento,String contraseña,String nombre_de_usuario)
     {
-        this.mascota=mascota1;
+       
         this.Contraseña=contraseña;
         this.Edad=edad;
         this.Fecha_de_Nacimiento=fecha_de_nacimiento;

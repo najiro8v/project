@@ -7,14 +7,18 @@ package frame_clases;
 import project.hilosProgresivo;
 import java.awt.Color;
 import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
  * @author reyna
  */
 public class NewJFrame extends javax.swing.JFrame {
-    hilosProgresivo hilo=new hilosProgresivo();
+    hilosProgresivo hilo;
     /**
      * Creates new form NewJFrame
      */
@@ -23,6 +27,7 @@ public class NewJFrame extends javax.swing.JFrame {
         initComponents();
        this.setVisible(true);
         setSize(720, 520);
+        jLabel7.setVisible(false);
         jPanel1.setSize(this.getSize());
         jLabel6.setSize(this.getSize());
         jLabel6.setIcon(mi_image("dog.jpg",this.getSize().width,this.getSize().height));
@@ -127,7 +132,16 @@ public class NewJFrame extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jLabel1.setText("jLabel7");
+        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel1.setText("Has olvidado tu contraseña?");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+        });
 
         jLabel7.setText("jLabel7");
 
@@ -165,7 +179,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addGap(108, 108, 108))))
+                        .addGap(53, 53, 53))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,8 +221,16 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        jProgressBar1.setVisible(true);
-          hilo.start();
+        if(Vacio(jTextField1)&&Vacio1(jPasswordField1))
+        {
+         jProgressBar1.setVisible(true);
+         hilo=new hilosProgresivo(jTextField1,this);
+         hilo.start();
+        
+         
+        
+        //this.setVisible(false);
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -252,8 +274,30 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jPasswordField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyTyped
-     
+     /*   char evto=evt.getKeyChar();
+        
+        System.out.println("------------"+java.awt.event.KeyEvent.VK_CAPS_LOCK);
+              
+        if(evt.==20)
+        {
+            jLabel7.setVisible(true);
+            jLabel7.setText("Mayuscula Activada");
+            
+        }
+        else{jLabel7.setVisible(false);}/*/
     }//GEN-LAST:event_jPasswordField1KeyTyped
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        jLabel3.setOpaque(true);
+       jLabel3.setForeground(Color.white);
+       jLabel3.setBackground(Color.black);
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+       jLabel3.setOpaque(false);
+        Color r=new Color(51,153,255);
+        jLabel3.setForeground(r);
+    }//GEN-LAST:event_jLabel1MouseExited
 
     /**
      * @param args the command line arguments
@@ -305,4 +349,24 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+public boolean Vacio(JTextField temp)
+{
+    if(temp.getText().length()<=0)
+    {
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+public boolean Vacio1(JPasswordField temp)
+{
+    if(temp.getText().length()<=0)
+    {
+        return false;
+    }
+    else{
+        return true;
+    }
+}
 }
