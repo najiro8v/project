@@ -19,7 +19,7 @@ import project.Registro;
  * @author reyna
  */
 public class register extends javax.swing.JFrame {
-
+    Registro n=new Registro();
     /**
      * Creates new form register
      */
@@ -255,15 +255,11 @@ public class register extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        if(Vacio(EMAIL)&&Vacio(NAME)&&Vacio(NAMEU)&&Vacio(PASSWORD)&&Vacio(PASSWORD1)&&Vacio(DATE)){JOptionPane.showMessageDialog(null,"!Felicidades¡ Se ha registrado","Notificacion de registro",JOptionPane.INFORMATION_MESSAGE);
-       this.setVisible(false);
-       Registro n=new Registro(15, NAME.getText(), "1015", PASSWORD.getText(),NAMEU.getText());
-           try {
-               n.list();
-           } catch (IOException ex) {
-               Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
-           }
-       //n.add();
-       n.install();
+       
+           System.out.println(DATE.getCalendar().toString());
+        //if(n.addDueño(15, NAME.getText(), "1015", PASSWORD.getText(),NAMEU.getText()))
+        //{
+        //n.show();}
        }
        else{JOptionPane.showMessageDialog(null,"Faltan datos para la completacion del registro","Datos Incompletos", JOptionPane.PLAIN_MESSAGE);}
        

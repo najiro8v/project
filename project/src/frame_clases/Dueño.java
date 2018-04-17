@@ -5,11 +5,13 @@
  */
 package frame_clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author casa
  */
-public class Dueño {
+public class Dueño implements Serializable{
     private Mascota mascota;
     private int Edad;
     private String Nombre_Real,Fecha_de_Nacimiento,Contraseña,Nombre_de_Usuario;

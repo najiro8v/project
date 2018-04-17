@@ -7,9 +7,17 @@ package frame_clases;
 import project.hilosProgresivo;
 import java.awt.Color;
 import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -18,7 +26,10 @@ import javax.swing.JTextField;
  * @author reyna
  */
 public class NewJFrame extends javax.swing.JFrame {
+    private Dueño tol;
     hilosProgresivo hilo;
+    ObjectInputStream oop;
+    Vector linaje;
     /**
      * Creates new form NewJFrame
      */
@@ -221,17 +232,39 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
+       
+       boolean temp=false;
         if(Vacio(jTextField1)&&Vacio1(jPasswordField1))
-        {
-         jProgressBar1.setVisible(true);
-         hilo=new hilosProgresivo(jTextField1,this);
-         hilo.start();
-        
-         
-        
-        //this.setVisible(false);
+        {File archivo=new File(jTextField1.getText());
+            if(archivo.exists()){JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\n econtrado","t", JOptionPane.PLAIN_MESSAGE);
+
+                                     try{   oop=new ObjectInputStream(new FileInputStream(archivo));
+                                            linaje=(Vector) oop.readObject();
+                                            tol=(Dueño)linaje.get(0);
+                                          //  System.out.println(tol.getContraseña());
+                                           // tol=(Dueño)linaje.get(1);
+                                            //System.out.println(tol.getContraseña());
+                                                try {
+                                                    Thread.sleep(5000);
+                                                } catch (InterruptedException ex) {
+                                                    Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                                                }
+                                            oop.close();
+                                          }catch(FileNotFoundException e ){}catch(ArrayIndexOutOfBoundsException e){}catch(IOException e){}catch(ClassNotFoundException e){}
+                                                if(tol.getContraseña().equals(jPasswordField1.getText())){
+                                                    jProgressBar1.setVisible(true);
+                                                    hilo=new hilosProgresivo(jTextField1,this);
+                                                    hilo.start();}
+                                                   //   JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\n econtrado\ny contraseña coinciden","t", JOptionPane.PLAIN_MESSAGE);  }
+                                                else{
+                                                    JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\nNo econtrado\nO\n Contraseña erronea","t", JOptionPane.PLAIN_MESSAGE);
+                                                    }
+                                }
+                            else{
+                               // System.out.println("asddd");
+                                JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\nNo econtrado\nO\n Contraseña erronea","t", JOptionPane.PLAIN_MESSAGE);
+                                } 
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
