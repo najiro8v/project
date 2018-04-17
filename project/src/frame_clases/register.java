@@ -63,7 +63,11 @@ public class register extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         DATE = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Nombre completo :");
@@ -280,7 +284,9 @@ public class register extends javax.swing.JFrame {
         n.show();}
        }
        else{JOptionPane.showMessageDialog(null,"Faltan datos para la completacion del registro","Datos Incompletos", JOptionPane.PLAIN_MESSAGE);}
-       
+       this.setVisible(false);
+          NewJFrame a=new NewJFrame();
+         a.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -297,6 +303,12 @@ public class register extends javax.swing.JFrame {
         NewJFrame n=new NewJFrame();
         n.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.setVisible(false);
+        NewJFrame a=new NewJFrame();
+        a.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

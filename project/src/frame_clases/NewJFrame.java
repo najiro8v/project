@@ -303,7 +303,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         register n=new register();
-        
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jPasswordField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyTyped

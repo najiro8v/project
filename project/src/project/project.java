@@ -14,7 +14,7 @@ import frame_clases.NewJFrame;
 public class project {
      public static void main(String[] args){
          
-         NewJFrame a=new NewJFrame();
+          NewJFrame a=new NewJFrame();
          a.setVisible(true);
      }
     
