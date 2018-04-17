@@ -321,15 +321,15 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1KeyTyped
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
-        jLabel3.setOpaque(true);
-       jLabel3.setForeground(Color.white);
-       jLabel3.setBackground(Color.black);
+        jLabel1.setOpaque(true);
+       jLabel1.setForeground(Color.white);
+       jLabel1.setBackground(Color.black);
     }//GEN-LAST:event_jLabel1MouseEntered
 
     private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
-       jLabel3.setOpaque(false);
+       jLabel1.setOpaque(false);
         Color r=new Color(51,153,255);
-        jLabel3.setForeground(r);
+        jLabel1.setForeground(r);
     }//GEN-LAST:event_jLabel1MouseExited
 
     /**
