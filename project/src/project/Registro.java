@@ -45,10 +45,10 @@ public class Registro {
         
     }
     
-    public boolean addDueño(int edad, String nombre_real,String fecha_de_nacimiento,String contraseña,String nombre_de_usuario)
+    public boolean addDueño(int edad1, String nombre_real,String fecha_de_nacimiento,String contraseña,String nombre_de_usuario)
     {
         
-        this.edad=edad;
+        this.edad=edad1;
         nombreR=nombre_real;
         fechaN=fecha_de_nacimiento;
         CONTRASEÑA=contraseña;
@@ -94,7 +94,8 @@ public class Registro {
         {
             tol=(Dueño)linaje.get(j);
             JOptionPane.showMessageDialog(null,"el usuario:"+tol.getNombre_de_Usuario()+"\nnombre: "+tol.getNombre_Real()
-                    +"\nFecha de Nacimiento"+tol.getFecha_de_Nacimiento(),"Completo", JOptionPane.ERROR_MESSAGE);
+                    +"\nFecha de Nacimiento"+tol.getFecha_de_Nacimiento()
+                    +"\nFecha de Nacimiento"+tol.getEdad(),"Completo", JOptionPane.ERROR_MESSAGE);
         }
     }
 

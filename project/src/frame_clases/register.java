@@ -7,6 +7,8 @@ package frame_clases;
 
 import com.toedter.calendar.JDateChooser;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -254,12 +256,28 @@ public class register extends javax.swing.JFrame {
     }//GEN-LAST:event_PASSWORDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if(Vacio(EMAIL)&&Vacio(NAME)&&Vacio(NAMEU)&&Vacio(PASSWORD)&&Vacio(PASSWORD1)&&Vacio(DATE)){JOptionPane.showMessageDialog(null,"!Felicidades¡ Se ha registrado","Notificacion de registro",JOptionPane.INFORMATION_MESSAGE);
-       
-           System.out.println(DATE.getCalendar().toString());
-        //if(n.addDueño(15, NAME.getText(), "1015", PASSWORD.getText(),NAMEU.getText()))
-        //{
-        //n.show();}
+       if(Vacio(NAME)&&Vacio(NAMEU)&&Vacio(PASSWORD)&&Vacio(PASSWORD1)&&Vacio(DATE)){
+           Date novoa=new Date();
+            int fechaFocal=DATE.getDate().getYear()+DATE.getDate().getMonth()+DATE.getDate().getDay(),
+                    fechaActual=novoa.getYear()+novoa.getMonth()+novoa.getDay();
+            if(fechaFocal<0)
+            {JOptionPane.showMessageDialog(null,"Lamento decirle que usted o es un ente maligno, bebio algun remedio de la abuelita que estaba bien hecho o simplemente estas mintiendo sobre tu edad","Verificacion de edad",JOptionPane.ERROR_MESSAGE);
+           return;
+            }
+        int edad=fechaActual-fechaFocal;
+           System.out.println(edad);
+        if(edad<0)
+        {
+            JOptionPane.showMessageDialog(null,"Es relativamente imposible tener una edad menor a la actual","Verificacion de edad",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(null,"!Felicidades¡ Se ha registrado","Notificacion de registro",JOptionPane.INFORMATION_MESSAGE);
+            
+         
+           
+        if(n.addDueño(edad, NAME.getText(),DATE.getDate().toString() , PASSWORD.getText(),NAMEU.getText()))
+        {
+        n.show();}
        }
        else{JOptionPane.showMessageDialog(null,"Faltan datos para la completacion del registro","Datos Incompletos", JOptionPane.PLAIN_MESSAGE);}
        
@@ -363,6 +381,7 @@ public boolean Vacio(JDateChooser temp)
         return false;
     }
     else{
+        
         return true;
     }
     }catch(NullPointerException e){
