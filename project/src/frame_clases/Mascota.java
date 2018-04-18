@@ -12,7 +12,8 @@ import java.io.Serializable;
  * @author reyna
  */
 public class Mascota implements Serializable{
-    private String Name,Sexo;
+    private String Name,Sexo,Especie;
+    private boolean enfermo;
     private int Edad;
     private float Peso,Estatura;
     public Mascota(String name,String sexo,float peso,float estatura,int edad)
