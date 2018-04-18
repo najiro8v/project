@@ -16,13 +16,15 @@ public class Mascota implements Serializable{
     private boolean enfermo;
     private int Edad;
     private float Peso,Estatura;
-    public Mascota(String name,String sexo,float peso,float estatura,int edad)
+    public Mascota(String name,String sexo,float peso,float estatura,int edad,String Espec)
     {
         this.Edad=edad;
         this.Estatura=estatura;
         this.Name=name;
         this.Peso=peso;
         this.Sexo=sexo;
+        this.Especie=Espec;
+        
     }
     public int getEdad()
     {
@@ -43,6 +45,14 @@ public class Mascota implements Serializable{
       public String getSexo()
     {
         return Sexo; 
+    }
+      public String getEspecie()
+    {
+        return Especie;
+    }
+      public boolean getEnfermo()
+    {
+        return enfermo;
     }
      /******************************SETs*********************************/
        public void setEdad(int edad)
@@ -65,6 +75,15 @@ public class Mascota implements Serializable{
     {
          this.Sexo=sexo; 
     }
+      public  void setEspecie(String Espe)
+    {
+         this.Especie=Espe; 
+    }
+      public  void setEnfermo(boolean enf)
+    {
+         this.enfermo=enf; 
+    }
+      
       public int GetTamañoM()
       {
           return getSexo().length()*2+4+4+4+getName().length()*2;
