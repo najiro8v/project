@@ -24,6 +24,17 @@ public class Mascota implements Serializable{
         this.Peso=peso;
         this.Sexo=sexo;
         this.Especie=Espec;
+        java.util.Random max=new java.util.Random();
+        int t=1+max.nextInt(2);
+        if(t==1)
+        {
+            this.enfermo=true;
+        }
+        else
+        {
+            this.enfermo=false;
+        }
+        System.out.println(this.enfermo);
         
     }
     public int getEdad()

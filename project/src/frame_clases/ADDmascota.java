@@ -285,7 +285,7 @@ public class ADDmascota extends javax.swing.JFrame {
       {   temp.Key(LLAVE);
         
           temp.addMASCOTA_a_Dueño(nombre.getText(),Sexo.getSelectedItem().toString(),Float.parseFloat(Peso.getText()), Float.parseFloat(Altura.getText()), Integer.parseInt(Edad.getValue().toString()),Especie.getSelectedItem().toString());
-          temp.showC();
+          //temp.showC();
       }
       else{
           JOptionPane.showMessageDialog(null,"No se debe establecer valores negativos, ni dejar espacios de campos nulos ò vacios ","Verificacion de los campos para agregar a una mascota", JOptionPane.PLAIN_MESSAGE);
