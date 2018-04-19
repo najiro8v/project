@@ -244,11 +244,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                           //  System.out.println(tol.getContraseña());
                                            // tol=(Dueño)linaje.get(1);
                                             //System.out.println(tol.getContraseña());
-                                                try {
-                                                    Thread.sleep(5000);
-                                                } catch (InterruptedException ex) {
-                                                    Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-                                                }
+                                               
                                             oop.close();
                                           }catch(FileNotFoundException e ){}catch(ArrayIndexOutOfBoundsException e){}catch(IOException e){}catch(ClassNotFoundException e){}
                                                 if(tol.getContraseña().equals(jPasswordField1.getText())){

@@ -6,15 +6,26 @@
 package frame_clases;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author casa
  */
 public class Principal extends javax.swing.JFrame {
-
+    File archivo;
+    ObjectInputStream oop;
+    ObjectOutputStream oos; 
+    private Vector linaje =new Vector();
     /**
      * Creates new form Principal
      */
@@ -22,10 +33,8 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(true);
         initComponents();
         jCheckBoxMenuItem1.setSelected(false);
-        
-        
-        
-        
+       
+      
     }
 
     /**
@@ -43,6 +52,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
@@ -73,8 +83,20 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jOutlookBar1.setToolTipText("");
+        jOutlookBar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jOutlookBar1MouseClicked(evt);
+            }
+        });
 
         jScrollPane3.setViewportView(jList1);
+
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -84,13 +106,19 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jButton1)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jButton1)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         jOutlookBar1.addTab("Mascotas registradas", jPanel3);
@@ -186,7 +214,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jOutlookBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         jMenuBar1.setAlignmentY(0.5F);
@@ -299,6 +327,14 @@ public class Principal extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jOutlookBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jOutlookBar1MouseClicked
+      establecer_list();
+    }//GEN-LAST:event_jOutlookBar1MouseClicked
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        establecer_list();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -330,11 +366,13 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -366,4 +404,21 @@ public void settext(String text)
 {
    jMenu3.setText(text);
 }
+    public void establecer_list(){
+        DefaultListModel temp=new DefaultListModel();
+        archivo=new File(jMenu3.getText());
+         try{oop=new ObjectInputStream(new FileInputStream(archivo));
+            linaje=(Vector)oop.readObject();
+            oop.close();
+    }catch(FileNotFoundException e ){}catch(ArrayIndexOutOfBoundsException e){}catch(IOException e){}catch(ClassNotFoundException e){}
+    Dueño next=(Dueño)linaje.get(0);
+    temp.addElement(" Nombre :"+next.getmascota().getName());
+    temp.addElement("               edad :"+next.getmascota().getEdad());
+    temp.addElement("               sexo :"+next.getmascota().getSexo());
+    temp.addElement("               Peso :"+next.getmascota().getPeso());
+    temp.addElement("               Estatura :"+next.getmascota().getEstatura());
+    temp.addElement("               Especie  :"+next.getmascota().getEspecie());
+    jList1.setModel(temp);
+         
+    }
 }
