@@ -72,6 +72,7 @@ public class Registro {
         Lectura_para_mascota();
         Dueño Temp=(Dueño)linaje.get(0);
         Temp.setmascota(pet);
+        Temp.addLIST();
         add(Temp);     
     }
     
@@ -122,19 +123,20 @@ public class Registro {
 
     public void showC(){
         LEctura();
-        int i= linaje.size();
+        
         
             tol=(Dueño)linaje.get(0);
+            for(int i=0;i<tol.getlistalenght();i++ ){
             JOptionPane.showMessageDialog(null,"el usuario:"+tol.getNombre_de_Usuario()+"\nnombre: "+tol.getNombre_Real()
                     +"\nFecha de Nacimiento "+tol.getFecha_de_Nacimiento()
-                    +"\nFecha de Nacimiento "+tol.getEdad()+
-                    "\nNombre de la Mascota "+tol.getmascota().getName()
-                    +"\nedad de la Mascota "+tol.getmascota().getEdad()
-                    +"\nsexo de la Mascota "+tol.getmascota().getSexo()
-                    +"\nPeso de la Mascota "+tol.getmascota().getPeso()
-                    +"\nEstatura de la Mascota "+tol.getmascota().getEstatura()
-                    +"\nEspecie  de la Mascota "+tol.getmascota().getEspecie(),"Completo", JOptionPane.ERROR_MESSAGE);
+                    +"\nFecha de Nacimiento "+tol.getEdad()+"\n Mascota #"+(i+1)+
+                    "\nNombre de la Mascota "+tol.getmascotaList(i).getName()
+                    +"\nedad de la Mascota "+tol.getmascotaList(i).getEdad()
+                    +"\nsexo de la Mascota "+tol.getmascotaList(i).getSexo()
+                    +"\nPeso de la Mascota "+tol.getmascotaList(i).getPeso()
+                    +"\nEstatura de la Mascota "+tol.getmascotaList(i).getEstatura()
+                    +"\nEspecie  de la Mascota "+tol.getmascotaList(i).getEspecie(),"Completo", JOptionPane.ERROR_MESSAGE);
         
-        
+            }
     } 
 }

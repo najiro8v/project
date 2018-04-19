@@ -56,7 +56,6 @@ public class Principal extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -104,7 +103,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
@@ -123,23 +122,21 @@ public class Principal extends javax.swing.JFrame {
 
         jOutlookBar1.addTab("Mascotas registradas", jPanel3);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(38, 38, 38)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
 
         jOutlookBar1.addTab("Mascotas Enfermas", jPanel4);
@@ -156,19 +153,6 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jOutlookBar1.addTab("Mascotas Sanas", jPanel5);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jOutlookBar1.addTab("Tratamiento Para cada Mascota", jPanel6);
 
         jLabel1.setText("Bienvenido a \"Pet's  Friends\"");
 
@@ -391,7 +375,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -412,13 +395,15 @@ public void settext(String text)
             oop.close();
     }catch(FileNotFoundException e ){}catch(ArrayIndexOutOfBoundsException e){}catch(IOException e){}catch(ClassNotFoundException e){}
     Dueño next=(Dueño)linaje.get(0);
-    temp.addElement(" Nombre :"+next.getmascota().getName());
-    temp.addElement("               edad :"+next.getmascota().getEdad());
-    temp.addElement("               sexo :"+next.getmascota().getSexo());
-    temp.addElement("               Peso :"+next.getmascota().getPeso());
-    temp.addElement("               Estatura :"+next.getmascota().getEstatura());
-    temp.addElement("               Especie  :"+next.getmascota().getEspecie());
-    jList1.setModel(temp);
+    for(int i=0;i<next.getlistalenght();i++ ){
+    temp.addElement(" Nombre : \""+next.getmascotaList(i).getName()+"\"");
+    temp.addElement("                 edad : "+next.getmascotaList(i).getEdad());
+    temp.addElement("                 sexo : "+next.getmascotaList(i).getSexo());
+    temp.addElement("                 Peso : "+next.getmascotaList(i).getPeso());
+    temp.addElement("                 Estatura : "+next.getmascotaList(i).getEstatura());
+    temp.addElement("                 Especie  : "+next.getmascotaList(i).getEspecie());
+    temp.addElement("---------------------------------------------------------------------------------------------------------------------");
+    }jList1.setModel(temp);
          
     }
 }

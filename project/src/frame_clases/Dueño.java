@@ -6,6 +6,7 @@
 package frame_clases;
 
 import java.io.Serializable;
+import java.util.Vector;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.io.Serializable;
  */
 public class Dueño implements Serializable{
     private Mascota mascota;
+    private Vector <Mascota> listaPEt=new Vector<Mascota>();
     private int Edad;
     private String Nombre_Real,Fecha_de_Nacimiento,Contraseña,Nombre_de_Usuario;
     public Dueño(){}
@@ -75,6 +77,7 @@ public class Dueño implements Serializable{
     public void setmascota(Mascota mascota1)
     {
         this.mascota=mascota1;
+        
     }
     public int getTamaño() {
       return  getNombre_Real().length()*2
@@ -85,4 +88,14 @@ public class Dueño implements Serializable{
               +getmascota().GetTamañoM();
          
     }
+    public void addLIST()
+    {
+        listaPEt.add(mascota);
+    }
+    public Mascota getmascotaList(int index)
+    {
+        return listaPEt.get(index);
+    }
+    public int getlistalenght()
+    {  return listaPEt.size();} 
 }
