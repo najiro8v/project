@@ -200,7 +200,12 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu2.setText("Mascota");
 
-        jMenuItem3.setText("jMenuItem3");
+        jMenuItem3.setText("Registar una mascota");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -288,6 +293,12 @@ public class Principal extends javax.swing.JFrame {
      }
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        this.dispose();
+        ADDmascota nuevo=new ADDmascota(jMenu3.getText());
+       
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -351,4 +362,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private project.TEst2 tEst21;
     // End of variables declaration//GEN-END:variables
+public void settext(String text)
+{
+   jMenu3.setText(text);
+}
 }
