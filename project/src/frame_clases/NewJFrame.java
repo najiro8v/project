@@ -7,6 +7,8 @@ package frame_clases;
 import project.hilosProgresivo;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -39,6 +41,7 @@ public class NewJFrame extends javax.swing.JFrame {
        this.setVisible(true);
         setSize(720, 520);
         jLabel7.setVisible(false);
+        jLabel7.setText("");
         jPanel1.setSize(this.getSize());
         jLabel6.setSize(this.getSize());
         jLabel6.setIcon(mi_image("dog.jpg",this.getSize().width,this.getSize().height));
@@ -86,12 +89,26 @@ public class NewJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jPanel1.setOpaque(false);
+        jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jPanel1KeyReleased(evt);
+            }
+        });
 
         jLabel5.setText("Contraseña");
 
         jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jPasswordField1KeyTyped(evt);
+            }
+        });
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
         });
 
@@ -236,7 +253,7 @@ public class NewJFrame extends javax.swing.JFrame {
        boolean temp=false;
         if(Vacio(jTextField1)&&Vacio1(jPasswordField1))
         {File archivo=new File(jTextField1.getText());
-            if(archivo.exists()){JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\n econtrado","t", JOptionPane.PLAIN_MESSAGE);
+            if(archivo.exists()){//JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\n econtrado","t", JOptionPane.PLAIN_MESSAGE);
 
                                      try{   oop=new ObjectInputStream(new FileInputStream(archivo));
                                             linaje=(Vector) oop.readObject();
@@ -258,7 +275,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 }
                             else{
                                // System.out.println("asddd");
-                                JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\nNo econtrado\nO\n Contraseña erronea","t", JOptionPane.PLAIN_MESSAGE);
+                                JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\nNo econtrado ò  Contraseña erronea","Fallo al acceder en el login ", JOptionPane.PLAIN_MESSAGE);
                                 } 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -327,6 +344,39 @@ public class NewJFrame extends javax.swing.JFrame {
         Color r=new Color(51,153,255);
         jLabel1.setForeground(r);
     }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jPanel1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyReleased
+        boolean activo=Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+        if(activo==true)
+        {jLabel7.setVisible(true);
+        jLabel7.setText("Tecla Mayuscula Activa");}
+        else{
+            
+        jLabel7.setText("");
+        }
+    }//GEN-LAST:event_jPanel1KeyReleased
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        boolean activo=Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+        if(activo==true)
+        {jLabel7.setVisible(true);
+        jLabel7.setText("Tecla Mayuscula Activa");}
+        else{
+            jLabel7.setVisible(true);
+        jLabel7.setText("");
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jPasswordField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyReleased
+         boolean activo=Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+        if(activo==true)
+        {jLabel7.setVisible(true);
+        jLabel7.setText("Tecla Mayuscula Activa");}
+        else{
+            jLabel7.setVisible(true);
+        jLabel7.setText("");
+        }
+    }//GEN-LAST:event_jPasswordField1KeyReleased
 
     /**
      * @param args the command line arguments

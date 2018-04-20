@@ -115,9 +115,9 @@ public class Registro {
         for(int j=0;j<i;j++)
         {
             tol=(Dueño)linaje.get(j);
-            JOptionPane.showMessageDialog(null,"el usuario:"+tol.getNombre_de_Usuario()+"\nnombre: "+tol.getNombre_Real()
-                    +"\nFecha de Nacimiento"+tol.getFecha_de_Nacimiento()
-                    +"\nFecha de Nacimiento"+tol.getEdad(),"Completo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"el usuario: "+tol.getNombre_de_Usuario()+"\nnombre: "+tol.getNombre_Real()
+                    +"\nFecha de Nacimiento: "+tol.getFecha_de_Nacimiento()
+                    +"\nEdad: "+tol.getEdad(),"datos del usuario", JOptionPane.ERROR_MESSAGE);
         }
     }
 

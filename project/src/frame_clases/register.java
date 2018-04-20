@@ -6,6 +6,7 @@
 package frame_clases;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
@@ -62,8 +63,15 @@ public class register extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         DATE = new com.toedter.calendar.JDateChooser();
+        jLabel8 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -85,6 +93,33 @@ public class register extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Contraseña :");
 
+        PASSWORD1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PASSWORD1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                PASSWORD1FocusLost(evt);
+            }
+        });
+        PASSWORD1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PASSWORD1ActionPerformed(evt);
+            }
+        });
+        PASSWORD1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PASSWORD1KeyTyped(evt);
+            }
+        });
+
+        PASSWORD.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PASSWORDFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                PASSWORDFocusLost(evt);
+            }
+        });
         PASSWORD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PASSWORDActionPerformed(evt);
@@ -94,6 +129,11 @@ public class register extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Confirmar Contraseña :");
 
+        EMAIL.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                EMAILFocusLost(evt);
+            }
+        });
         EMAIL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EMAILActionPerformed(evt);
@@ -169,6 +209,17 @@ public class register extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel7)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addGap(61, 61, 61))
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,16 +247,14 @@ public class register extends javax.swing.JFrame {
                             .addComponent(DATE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addGap(61, 61, 61))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +275,11 @@ public class register extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(PASSWORD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -241,7 +294,7 @@ public class register extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jButton2))
         );
 
@@ -271,10 +324,22 @@ public class register extends javax.swing.JFrame {
             }
         int edad=fechaActual-fechaFocal;
            System.out.println(edad);
+           if(!PASSWORD.getText().equals(PASSWORD1.getText()))
+         {
+             JOptionPane.showMessageDialog(null,"Las contraseñas no coinciden por lo tanto verifique y corrija ese error","Verificacion de Contraseña",JOptionPane.ERROR_MESSAGE);
+            
+             return;
+         }
         if(edad<0)
         {
             JOptionPane.showMessageDialog(null,"Es relativamente imposible tener una edad menor a la actual","Verificacion de edad",JOptionPane.ERROR_MESSAGE);
             return;
+        }
+        
+        if(Verificando(EMAIL)==false)
+        {JOptionPane.showMessageDialog(null,"El correo electronico no es reconocido como tal, lo mas posible es que falta cietos caracteres como '@'","Verificacion de Correo Electronico",JOptionPane.ERROR_MESSAGE);
+            return;
+            
         }
         JOptionPane.showMessageDialog(null,"!Felicidades¡ Se ha registrado","Notificacion de registro",JOptionPane.INFORMATION_MESSAGE);
             
@@ -310,6 +375,137 @@ public class register extends javax.swing.JFrame {
         NewJFrame a=new NewJFrame();
         a.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
+
+    private void PASSWORD1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PASSWORD1KeyTyped
+       
+    }//GEN-LAST:event_PASSWORD1KeyTyped
+
+    private void PASSWORD1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PASSWORD1FocusLost
+       if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
+       {if(PASSWORD.getText().equals(PASSWORD1.getText()))
+            {
+                jLabel8.setVisible(false);
+                Color r=new Color(255,255,255);
+                PASSWORD1.setBackground(r);
+                System.out.println(PASSWORD.getText().equals(PASSWORD1.getText()));
+                
+            }
+       else{
+          
+           jLabel8.setVisible(true);
+           jLabel8.setText("las Contraseñas no coinciden");
+           PASSWORD1.setForeground(Color.black);
+           PASSWORD1.setBackground(Color.red);
+            }
+       }
+       
+    }//GEN-LAST:event_PASSWORD1FocusLost
+
+    private void PASSWORD1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PASSWORD1FocusGained
+if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
+       {if(PASSWORD.getText().equals(PASSWORD1.getText()))
+            {
+                jLabel8.setVisible(false);
+                Color r=new Color(255,255,255);
+                PASSWORD1.setBackground(r);
+                System.out.println(PASSWORD.getText().equals(PASSWORD1.getText()));
+                
+            }
+       else{
+          
+           jLabel8.setVisible(true);
+           jLabel8.setText("Contraseñas no coinciden");
+           PASSWORD1.setForeground(Color.black);
+           PASSWORD1.setBackground(Color.red);
+            }
+       }
+    }//GEN-LAST:event_PASSWORD1FocusGained
+
+    private void PASSWORD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PASSWORD1ActionPerformed
+//       if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
+//       {if(PASSWORD1.getText().equals(PASSWORD1))
+//            {
+//                jLabel8.setVisible(false);
+//                Color r=new Color(255,255,255);
+//                PASSWORD1.setBackground(r);
+//                System.out.println("sd");
+//                
+//                
+//            }}
+    }//GEN-LAST:event_PASSWORD1ActionPerformed
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+//      if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
+//       {if(PASSWORD1.getText().equals(PASSWORD1))
+//            {System.out.println("move");
+//                jLabel8.setVisible(false);
+//                Color r=new Color(255,255,255);
+//                PASSWORD1.setBackground(r);
+//                
+//                
+//            }}
+    }//GEN-LAST:event_formMouseMoved
+
+    private void PASSWORDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PASSWORDFocusGained
+      if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
+       {if(PASSWORD.getText().equals(PASSWORD1.getText()))
+            {jLabel8.setVisible(false);
+                jLabel8.setText("coinciden");
+                Color r=new Color(255,255,255);
+                PASSWORD1.setBackground(r);
+                
+                
+            }
+       else{
+           jLabel8.setVisible(true);
+           jLabel8.setText("Contraseñas no coinciden");
+           PASSWORD1.setForeground(Color.black);
+           PASSWORD1.setBackground(Color.red);
+            }
+       }
+    }//GEN-LAST:event_PASSWORDFocusGained
+
+    private void PASSWORDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PASSWORDFocusLost
+       if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
+       {if(PASSWORD.getText().equals(PASSWORD1.getText()))
+            {jLabel8.setVisible(false);
+                jLabel8.setText("coinciden");
+                Color r=new Color(255,255,255);
+                PASSWORD1.setBackground(r);
+                
+                
+            }
+       else{
+           jLabel8.setVisible(true);
+           jLabel8.setText("Contraseñas no coinciden");
+           PASSWORD1.setForeground(Color.black);
+           PASSWORD1.setBackground(Color.red);
+            }
+       }
+    }//GEN-LAST:event_PASSWORDFocusLost
+
+    private void EMAILFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EMAILFocusLost
+        Color r= new Color(255,255,255);
+        if(Vacio(EMAIL))
+        {   int cont=0;
+            char temp[]=EMAIL.getText().toCharArray();
+            for(int i=0;i<temp.length;i++)
+            {
+                if(temp[i]=='@')
+                {
+                    cont++;
+                }
+            }
+            if(cont!=1)
+            {
+                EMAIL.setBackground(Color.red);
+            }
+            else{ EMAIL.setBackground(r);}
+            if(EMAIL.getText().endsWith(".es")||EMAIL.getText().endsWith(".com")){EMAIL.setBackground(r); }
+            else{EMAIL.setBackground(Color.red);}
+            
+        }
+    }//GEN-LAST:event_EMAILFocusLost
 
     /**
      * @param args the command line arguments
@@ -363,9 +559,11 @@ public class register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 public boolean Vacio(JTextField temp)
 {
@@ -402,4 +600,32 @@ public boolean Vacio(JDateChooser temp)
     }
 
 }
+public boolean Verificando(JTextField GMAIL)
+    {
+        Color r= new Color(255,255,255);
+        if(Vacio(GMAIL))
+        {   int cont=0;
+            char temp[]=GMAIL.getText().toCharArray();
+            for(int i=0;i<temp.length;i++)
+            {
+                if(temp[i]=='@')
+                {
+                    cont++;
+                }
+            }
+            if(cont!=1)
+            {
+                GMAIL.setBackground(Color.red);
+                return false;
+            }
+            else{ GMAIL.setBackground(r);}
+            if(GMAIL.getText().endsWith(".es")||GMAIL.getText().endsWith(".com")){
+            GMAIL.setBackground(r);
+                System.out.println("nani");}
+            else{GMAIL.setBackground(Color.red);
+                return false;}
+         return true;   
+        }
+        else{return true; }
+    }
 }
