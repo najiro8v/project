@@ -314,16 +314,17 @@ public class register extends javax.swing.JFrame {
     }//GEN-LAST:event_PASSWORDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if(Vacio(NAME)&&Vacio(NAMEU)&&Vacio(PASSWORD)&&Vacio(PASSWORD1)&&Vacio(DATE)){
+       if(Vacio(NAME)&&Vacio(NAMEU)&&Vacio(PASSWORD)&&Vacio(PASSWORD1)&&Vacio(DATE)&&Vacio(EMAIL)){
            Date novoa=new Date();
-            int fechaFocal=DATE.getDate().getYear()+DATE.getDate().getMonth()+DATE.getDate().getDay(),
-                    fechaActual=novoa.getYear()+novoa.getMonth()+novoa.getDay();
+            double fechaFocal=((double)DATE.getDate().getYear())+((double)DATE.getDate().getMonth())/100+((double)DATE.getDate().getDay())/1000,
+                    fechaActual=((double)novoa.getYear())+((double)novoa.getMonth())/100+((double)novoa.getDay())/1000;
             if(fechaFocal<0)
             {JOptionPane.showMessageDialog(null,"Lamento decirle que usted o es un ente maligno, bebio algun remedio de la abuelita que estaba bien hecho o simplemente estas mintiendo sobre tu edad","Verificacion de edad",JOptionPane.ERROR_MESSAGE);
            return;
             }
-        int edad=fechaActual-fechaFocal;
-           System.out.println(edad);
+            
+        int edad=(int)((-1)*(fechaFocal-fechaActual));
+        
            if(!PASSWORD.getText().equals(PASSWORD1.getText()))
          {
              JOptionPane.showMessageDialog(null,"Las contraseñas no coinciden por lo tanto verifique y corrija ese error","Verificacion de Contraseña",JOptionPane.ERROR_MESSAGE);
@@ -336,7 +337,7 @@ public class register extends javax.swing.JFrame {
             return;
         }
         
-        if(Verificando(EMAIL)==false)
+       if(Verificando(EMAIL)==false)
         {JOptionPane.showMessageDialog(null,"El correo electronico no es reconocido como tal, lo mas posible es que falta cietos caracteres como '@'","Verificacion de Correo Electronico",JOptionPane.ERROR_MESSAGE);
             return;
             
@@ -345,7 +346,7 @@ public class register extends javax.swing.JFrame {
             
          
            
-        if(n.addDueño(edad, NAME.getText(),DATE.getDate().toString() , PASSWORD.getText(),NAMEU.getText()))
+       if(n.addDueño(edad, NAME.getText(),DATE.getDate().toString() , PASSWORD.getText(),NAMEU.getText(),EMAIL.getText()))
         {
         n.show();}
        }

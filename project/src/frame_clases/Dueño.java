@@ -16,9 +16,9 @@ public class Dueño implements Serializable{
     private Mascota mascota;
     private Vector <Mascota> listaPEt=new Vector<Mascota>();
     private int Edad;
-    private String Nombre_Real,Fecha_de_Nacimiento,Contraseña,Nombre_de_Usuario;
+    private String Nombre_Real,Fecha_de_Nacimiento,Contraseña,Nombre_de_Usuario,Correo;
     public Dueño(){}
-    public Dueño(int edad, String nombre_real,String fecha_de_nacimiento,String contraseña,String nombre_de_usuario)
+    public Dueño(int edad, String nombre_real,String fecha_de_nacimiento,String contraseña,String nombre_de_usuario,String email)
     {
        
         this.Contraseña=contraseña;
@@ -26,8 +26,12 @@ public class Dueño implements Serializable{
         this.Fecha_de_Nacimiento=fecha_de_nacimiento;
         this.Nombre_Real=nombre_real;
         this.Nombre_de_Usuario=nombre_de_usuario;
-        
+        this.Correo=email;
        
+    }
+    public String getEmail()
+    {
+        return Correo;
     }
     public String getNombre_Real()
     {
@@ -54,6 +58,11 @@ public class Dueño implements Serializable{
         return mascota;
     }
     /***************************************************************/
+   
+    public void setEmail(String eamil)
+    {
+        this.Correo=eamil;
+    }
     public void setNombre_Real(String nombre_real)
     {
         this.Nombre_Real=nombre_real;

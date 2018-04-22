@@ -46,7 +46,7 @@ public class Registro {
         
     }
     
-    public boolean addDueño(int edad1, String nombre_real,String fecha_de_nacimiento,String contraseña,String nombre_de_usuario)
+    public boolean addDueño(int edad1, String nombre_real,String fecha_de_nacimiento,String contraseña,String nombre_de_usuario,String email )
     {
         
         this.edad=edad1;
@@ -54,7 +54,7 @@ public class Registro {
         fechaN=fecha_de_nacimiento;
         CONTRASEÑA=contraseña;
         nombreU=nombre_de_usuario;
-        nuevo=new Dueño(edad,nombreR,fechaN,CONTRASEÑA,nombreU);
+        nuevo=new Dueño(edad,nombreR,fechaN,CONTRASEÑA,nombreU,email);
         archivo=new File(nombreU);
         if(archivo.exists()){
         JOptionPane.showMessageDialog(null,"Nombre de Usuario ya registrado","Revision de usuarios ",JOptionPane.PLAIN_MESSAGE);
@@ -117,7 +117,7 @@ public class Registro {
             tol=(Dueño)linaje.get(j);
             JOptionPane.showMessageDialog(null,"el usuario: "+tol.getNombre_de_Usuario()+"\nnombre: "+tol.getNombre_Real()
                     +"\nFecha de Nacimiento: "+tol.getFecha_de_Nacimiento()
-                    +"\nEdad: "+tol.getEdad(),"datos del usuario", JOptionPane.ERROR_MESSAGE);
+                    +"\nEdad: "+tol.getEdad()+"\nCorreo Electronico: "+tol.getEmail(),"datos del usuario", JOptionPane.ERROR_MESSAGE);
         }
     }
 
