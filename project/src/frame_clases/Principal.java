@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -143,7 +144,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jButton1)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jOutlookBar1.addTab("Mascotas registradas", jPanel3);
@@ -157,13 +158,10 @@ public class Principal extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jScrollPane5.setViewportView(jTable1);
@@ -198,7 +196,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addContainerGap())
@@ -310,7 +308,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jOutlookBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jOutlookBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -536,7 +534,7 @@ public void settext(String text)
 }
     public void establecer_list(){
         DefaultListModel temp=new DefaultListModel();
-        archivo=new File(jMenu3.getText());
+        archivo=new File("Users//"+jMenu3.getText());
          try{oop=new ObjectInputStream(new FileInputStream(archivo));
             linaje=(Vector)oop.readObject();
             oop.close();
@@ -556,12 +554,13 @@ public void settext(String text)
     
     public void establecerModelo()
     {
-       archivo=new File(jMenu3.getText());
+       archivo=new File("Users//"+jMenu3.getText());
          try{oop=new ObjectInputStream(new FileInputStream(archivo));
             linaje=(Vector)oop.readObject();
             oop.close();
     }catch(FileNotFoundException e ){}catch(ArrayIndexOutOfBoundsException e){}catch(IOException e){}catch(ClassNotFoundException e){}
     Dueño next=(Dueño)linaje.get(0);
+       
     Object []temp= new Object[6];
     for(int i=0;i<next.getlistalenght();i++ ){
     if(next.getmascotaList(i).getEnfermo()==true)
@@ -577,9 +576,16 @@ public void settext(String text)
     }
         jTable1.setModel(modelo);
     }
+    
+    
+    
+    
+    
+    
+    
     public void establecerModelo1()
     {
-       archivo=new File(jMenu3.getText());
+       archivo=new File("Users//"+jMenu3.getText());
          try{oop=new ObjectInputStream(new FileInputStream(archivo));
             linaje=(Vector)oop.readObject();
             oop.close();

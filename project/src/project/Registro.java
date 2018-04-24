@@ -55,7 +55,7 @@ public class Registro {
         CONTRASEÑA=contraseña;
         nombreU=nombre_de_usuario;
         nuevo=new Dueño(edad,nombreR,fechaN,CONTRASEÑA,nombreU,email);
-        archivo=new File(nombreU);
+        archivo=new File("Users//"+nombreU);
         if(archivo.exists()){
         JOptionPane.showMessageDialog(null,"Nombre de Usuario ya registrado","Revision de usuarios ",JOptionPane.PLAIN_MESSAGE);
         
@@ -98,10 +98,10 @@ public class Registro {
     
     }
     public void Key(String key){
-    archivo=new File(key);
+    archivo=new File("Users//"+key);
         CLAVE=key;}
      public void Lectura_para_mascota()
-    {   File archivo=new File(CLAVE);
+    {   File archivo=new File("Users//"+CLAVE);
         try{oop=new ObjectInputStream(new FileInputStream(archivo));
             linaje=(Vector)oop.readObject();
             oop.close();

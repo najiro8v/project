@@ -252,7 +252,7 @@ public class NewJFrame extends javax.swing.JFrame {
        
        boolean temp=false;
         if(Vacio(jTextField1)&&Vacio1(jPasswordField1))
-        {File archivo=new File(jTextField1.getText());
+        {File archivo=new File("Users//"+jTextField1.getText());
             if(archivo.exists()){//JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\n econtrado","t", JOptionPane.PLAIN_MESSAGE);
 
                                      try{   oop=new ObjectInputStream(new FileInputStream(archivo));
