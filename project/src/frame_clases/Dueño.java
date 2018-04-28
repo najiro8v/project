@@ -18,7 +18,7 @@ public class Dueño implements Serializable{
     private int Edad;
     private String Nombre_Real,Fecha_de_Nacimiento,Contraseña,Nombre_de_Usuario,Correo;
     public Dueño(){}
-    public Dueño(int edad, String nombre_real,String fecha_de_nacimiento,String contraseña,String nombre_de_usuario,String email)
+    public Dueño(String nombre_de_usuario,int edad, String nombre_real,String fecha_de_nacimiento,String contraseña,String email)
     {
        
         this.Contraseña=contraseña;
@@ -94,10 +94,10 @@ public class Dueño implements Serializable{
               +getNombre_de_Usuario().length()*2
               +getContraseña().length()*2
               +getFecha_de_Nacimiento().length()*2
-              +getmascota().GetTamañoM();
+/*              +getmascota().GetTamañoM()*/;
          
     }
-    public void addLIST()
+  /*  public void addLIST()
     {
         listaPEt.add(mascota);
     }
@@ -106,5 +106,5 @@ public class Dueño implements Serializable{
         return listaPEt.get(index);
     }
     public int getlistalenght()
-    {  return listaPEt.size();} 
+    {  return listaPEt.size();} */
 }

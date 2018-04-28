@@ -22,12 +22,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import project.AL_dueño;
+import project.AL_mascota;
 
 /**
  *
  * @author reyna
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class LOGIN extends javax.swing.JFrame {
     private Dueño tol;
     hilosProgresivo hilo;
     ObjectInputStream oop;
@@ -35,7 +37,7 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public LOGIN() {
         
         initComponents();
        this.setVisible(true);
@@ -252,32 +254,70 @@ public class NewJFrame extends javax.swing.JFrame {
        
        boolean temp=false;
         if(Vacio(jTextField1)&&Vacio1(jPasswordField1))
-        {File archivo=new File("Users//"+jTextField1.getText());
+        {  
+            /*File archivo=new File("Users//"+jTextField1.getText());
             if(archivo.exists()){//JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\n econtrado","t", JOptionPane.PLAIN_MESSAGE);
-
-                                     try{   oop=new ObjectInputStream(new FileInputStream(archivo));
-                                            linaje=(Vector) oop.readObject();
-                                            tol=(Dueño)linaje.get(0);
-                                          //  System.out.println(tol.getContraseña());
-                                           // tol=(Dueño)linaje.get(1);
-                                            //System.out.println(tol.getContraseña());
-                                               
-                                            oop.close();
-                                          }catch(FileNotFoundException e ){}catch(ArrayIndexOutOfBoundsException e){}catch(IOException e){}catch(ClassNotFoundException e){}
-                                                if(tol.getContraseña().equals(jPasswordField1.getText())){
-                                                    jProgressBar1.setVisible(true);
-                                                    hilo=new hilosProgresivo(jTextField1,this);
-                                                    hilo.start();}
-                                                   //   JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\n econtrado\ny contraseña coinciden","t", JOptionPane.PLAIN_MESSAGE);  }
-                                                else{
-                                                    JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\nNo econtrado\nO\n Contraseña erronea","t", JOptionPane.PLAIN_MESSAGE);
-                                                    }
-                                }
+            /*
+            try{   oop=new ObjectInputStream(new FileInputStream(archivo));
+            linaje=(Vector) oop.readObject();
+            tol=(Dueño)linaje.get(0);
+            //  System.out.println(tol.getContraseña());
+            // tol=(Dueño)linaje.get(1);
+            //System.out.println(tol.getContraseña());
+            
+            oop.close();
+            }catch(FileNotFoundException e ){System.out.println("no enxiste"); }catch(ArrayIndexOutOfBoundsException | IOException | ClassNotFoundException e){}
+            if(tol.getContraseña().equals(jPasswordField1.getText())){
+            
+            hilo=new hilosProgresivo(jTextField1,this);
+            hilo.start();}
+            //   JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\n econtrado\ny contraseña coinciden","t", JOptionPane.PLAIN_MESSAGE);  }
+            else{
+            JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\nNo econtrado\nO\n Contraseña erronea","t", JOptionPane.PLAIN_MESSAGE);
+            }
+            
+            */
+            
+            /*******************************
+             * }else{JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\n NO Registrado","Fallo en login", JOptionPane.PLAIN_MESSAGE);
+             * }*/
+            boolean lol=false;
+            try {
+                AL_dueño.CrearFileDueño(new File("Dueños.dat"));
+                int s=AL_dueño.getNumeroRegistro();
+                
+                for(int i=0;i<s;i++ ){
+                    System.out.println(AL_dueño.getDueño(i).getNombre_de_Usuario());
+                  if(AL_dueño.getDueño(i).getNombre_de_Usuario().equals(jTextField1.getText())
+                  &&AL_dueño.getDueño(i).getContraseña().equals(jPasswordField1.getText()))  
+                  { 
+                        JOptionPane.showMessageDialog(null,"login ImI","FAllA EN LOGIN",JOptionPane.INFORMATION_MESSAGE);
+                        AL_dueño.cerrar();
+                   hilo=new hilosProgresivo(jTextField1,this);
+                    jButton1.setEnabled(false);
+                    jProgressBar1.setVisible(true);
+                    hilo.start();
+                  }
+                    
+                }
+                System.out.println("2");
+                AL_dueño.cerrar();
+                if(lol==false){
+                JOptionPane.showMessageDialog(null,"Usuario erroneo o contraseña erronea","FAllA EN LOGIN",JOptionPane.INFORMATION_MESSAGE);
+                }
+                } catch (IOException ex) {
+                System.out.println("error 404");
+             //Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        }
                             else{
                                // System.out.println("asddd");
-                                JOptionPane.showMessageDialog(null,"Usuario: "+jTextField1.getText()+"\nNo econtrado ò  Contraseña erronea","Fallo al acceder en el login ", JOptionPane.PLAIN_MESSAGE);
+                                JOptionPane.showMessageDialog(null,"Campos de texto vacios","Fallo al acceder en el login ", JOptionPane.PLAIN_MESSAGE);
                                 } 
-        }
+        
+        
+        
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
@@ -395,20 +435,20 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LOGIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LOGIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LOGIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LOGIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new LOGIN().setVisible(true);
             }
         });
     }

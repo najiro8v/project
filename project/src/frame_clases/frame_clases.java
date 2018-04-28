@@ -12,7 +12,7 @@ package frame_clases;
 public class frame_clases {
 public static void main(String [] args)
 {System.out.println("45");
-NewJFrame a=new NewJFrame();
+LOGIN a=new LOGIN();
     
 }
 }

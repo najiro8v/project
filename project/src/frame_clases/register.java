@@ -7,6 +7,7 @@ package frame_clases;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,13 +16,16 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import project.AL_dueño;
 import project.Registro;
+import project.AL_mascota;
 
 /**
  *
  * @author reyna
  */
 public class register extends javax.swing.JFrame {
+      public static AL_mascota accesoAleatorio=new AL_mascota();
     Registro n=new Registro();
     /**
      * Creates new form register
@@ -337,7 +341,7 @@ public class register extends javax.swing.JFrame {
             return;
         }
         
-       if(Verificando(EMAIL)==false)
+      if(Verificando(EMAIL)==false)
         {JOptionPane.showMessageDialog(null,"El correo electronico no es reconocido como tal, lo mas posible es que falta cietos caracteres como '@'","Verificacion de Correo Electronico",JOptionPane.ERROR_MESSAGE);
             return;
             
@@ -346,14 +350,21 @@ public class register extends javax.swing.JFrame {
             
          
            
-       if(n.addDueño(edad, NAME.getText(),DATE.getDate().toString() , PASSWORD.getText(),NAMEU.getText(),EMAIL.getText()))
-        {
-        n.show();}
+               /*
+               if(n.addDueño(edad, NAME.getText(),DATE.getDate().toString() , PASSWORD.getText(),NAMEU.getText(),EMAIL.getText()))
+               {
+               n.show();}*/try {
+               AL_dueño.CrearFileDueño(new File("Dueños.dat"));
+                   AL_dueño.añadirDueño(new Dueño(NAMEU.getText(),edad, NAME.getText(),DATE.getDate().toString() , PASSWORD.getText(),EMAIL.getText()));
+              AL_dueño.cerrar();
+           } catch (IOException ex) {
+               Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+           }
        }
        else{JOptionPane.showMessageDialog(null,"Faltan datos para la completacion del registro","Datos Incompletos", JOptionPane.PLAIN_MESSAGE);}
-       this.setVisible(false);
+      /* this.setVisible(false);
           NewJFrame a=new NewJFrame();
-         a.setVisible(true);
+         a.setVisible(true);*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -367,13 +378,13 @@ public class register extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
-        NewJFrame n=new NewJFrame();
+        LOGIN n=new LOGIN();
         n.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         this.setVisible(false);
-        NewJFrame a=new NewJFrame();
+        LOGIN a=new LOGIN();
         a.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
@@ -423,28 +434,28 @@ if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
     }//GEN-LAST:event_PASSWORD1FocusGained
 
     private void PASSWORD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PASSWORD1ActionPerformed
-//       if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
-//       {if(PASSWORD1.getText().equals(PASSWORD1))
-//            {
-//                jLabel8.setVisible(false);
-//                Color r=new Color(255,255,255);
-//                PASSWORD1.setBackground(r);
-//                System.out.println("sd");
-//                
-//                
-//            }}
+       if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
+       {if(PASSWORD1.getText().equals(PASSWORD1))
+            {
+                jLabel8.setVisible(false);
+                Color r=new Color(255,255,255);
+                PASSWORD1.setBackground(r);
+               System.out.println("sd");
+                
+                
+            }}
     }//GEN-LAST:event_PASSWORD1ActionPerformed
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
-//      if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
-//       {if(PASSWORD1.getText().equals(PASSWORD1))
-//            {System.out.println("move");
-//                jLabel8.setVisible(false);
-//                Color r=new Color(255,255,255);
-//                PASSWORD1.setBackground(r);
-//                
-//                
-//            }}
+      if(Vacio(PASSWORD)&&Vacio(PASSWORD1))
+       {if(PASSWORD1.getText().equals(PASSWORD1))
+            {System.out.println("move");
+                jLabel8.setVisible(false);
+                Color r=new Color(255,255,255);
+                PASSWORD1.setBackground(r);
+                
+                
+            }}
     }//GEN-LAST:event_formMouseMoved
 
     private void PASSWORDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PASSWORDFocusGained

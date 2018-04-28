@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package project;
-import frame_clases.NewJFrame;
+import frame_clases.LOGIN;
 import frame_clases.Principal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,17 +32,17 @@ public class hilosProgresivo extends Thread {
     {
         for(int x=0;x<=100;x+=10){
             try {
-                NewJFrame.jProgressBar1.setValue(x);
+                LOGIN.jProgressBar1.setValue(x);
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
                 Logger.getLogger(hilosProgresivo.class.getName()).log(Level.SEVERE, null, ex);
             }
-            NewJFrame.jProgressBar1.setValue(x);
+            LOGIN.jProgressBar1.setValue(x);
         }
         Principal n=new Principal();
         Principal.jMenu3.setText(o.getText());
         n.setVisible(true);
-        ta.setVisible(false);
+        ta.dispose();
         JOptionPane.showMessageDialog(null, "Bienvenido Cliente","Login confirmado",JOptionPane.INFORMATION_MESSAGE);
     }
 }

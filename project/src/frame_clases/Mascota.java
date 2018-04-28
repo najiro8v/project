@@ -37,6 +37,18 @@ public class Mascota implements Serializable{
         System.out.println(this.enfermo);
         
     }
+    
+    public Mascota(String name,String sexo,float peso,float estatura,int edad,String Espec,boolean enfermo1)
+    {this.Edad=edad;
+        this.Estatura=estatura;
+        this.Name=name;
+        this.Peso=peso;
+        this.Sexo=sexo;
+        this.Especie=Espec;
+        this.enfermo=enfermo1;
+        
+    }
+    
     public int getEdad()
     {
         return Edad;

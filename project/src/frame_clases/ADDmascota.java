@@ -5,16 +5,20 @@
  */
 package frame_clases;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import project.Registro;
+import project.AL_mascota;
 
 /**
  *
@@ -283,9 +287,30 @@ public class ADDmascota extends javax.swing.JFrame {
       Registro temp=new Registro();
         if(Vacio(Altura)&&Vacio(Edad)&&Vacio(Peso)&&Vacio(nombre))
       {   temp.Key(LLAVE);
-        
-          temp.addMASCOTA_a_Dueño(nombre.getText(),Sexo.getSelectedItem().toString(),Float.parseFloat(Peso.getText()), Float.parseFloat(Altura.getText()), Integer.parseInt(Edad.getValue().toString()),Especie.getSelectedItem().toString());
-          //temp.showC();
+        String t=this.getTitle()+".dat";
+                
+          try {
+              AL_mascota.CrearFileDueño(new File(t));
+             java.util.Random max=new java.util.Random();
+             boolean enfermo;
+            int k=1+max.nextInt(2);
+            if(k==1)
+            {
+            enfermo=true;
+            }
+            else
+            {
+            enfermo=false;
+            }   
+             Mascota falso= new Mascota(nombre.getText(),Sexo.getSelectedItem().toString(),Float.parseFloat(Peso.getText()),Float.parseFloat(Altura.getText()),Integer.parseInt((Edad.getValue().toString())), Especie.getSelectedItem().toString(),enfermo);
+              AL_mascota.añadirDueño(falso);
+              AL_mascota.cerrar();
+              
+            //          temp.addMASCOTA_a_Dueño(nombre.getText(),Sexo.getSelectedItem().toString(),Float.parseFloat(Peso.getText()), Float.parseFloat(Altura.getText()), Integer.parseInt(Edad.getValue().toString()),Especie.getSelectedItem().toString());
+            //temp.showC();
+          } catch (IOException ex) {
+              Logger.getLogger(ADDmascota.class.getName()).log(Level.SEVERE, null, ex);
+          }
       }
       else{
           JOptionPane.showMessageDialog(null,"No se debe establecer valores negativos, ni dejar espacios de campos nulos ò vacios ","Verificacion de los campos para agregar a una mascota", JOptionPane.PLAIN_MESSAGE);

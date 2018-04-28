@@ -54,7 +54,7 @@ public class Registro {
         fechaN=fecha_de_nacimiento;
         CONTRASEÑA=contraseña;
         nombreU=nombre_de_usuario;
-        nuevo=new Dueño(edad,nombreR,fechaN,CONTRASEÑA,nombreU,email);
+        nuevo=new Dueño(nombreU,edad,nombreR,fechaN,CONTRASEÑA,email);
         archivo=new File("Users//"+nombreU);
         if(archivo.exists()){
         JOptionPane.showMessageDialog(null,"Nombre de Usuario ya registrado","Revision de usuarios ",JOptionPane.PLAIN_MESSAGE);
@@ -66,7 +66,7 @@ public class Registro {
         
     }
     
-    public void addMASCOTA_a_Dueño(String nombre,String sexo,float peso,float estatura,int edad,String Espec)
+    /*public void addMASCOTA_a_Dueño(String nombre,String sexo,float peso,float estatura,int edad,String Espec)
     {
         Mascota pet=new Mascota(nombre, sexo, peso,estatura ,edad,Espec );
         Lectura_para_mascota();
@@ -74,7 +74,7 @@ public class Registro {
         Temp.setmascota(pet);
         Temp.addLIST();
         add(Temp);     
-    }
+    }*/
     
     public void add(Dueño magic){
     linaje.add(magic);
@@ -121,7 +121,7 @@ public class Registro {
         }
     }
 
-    public void showC(){
+   /* public void showC(){
         LEctura();
         
         
@@ -138,5 +138,5 @@ public class Registro {
                     +"\nEspecie  de la Mascota "+tol.getmascotaList(i).getEspecie(),"Completo", JOptionPane.ERROR_MESSAGE);
         
             }
-    } 
+    } */
 }

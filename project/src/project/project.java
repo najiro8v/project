@@ -5,7 +5,7 @@
  */
 package project;
 
-import frame_clases.NewJFrame;
+import frame_clases.LOGIN;
 
 /**
  *
@@ -14,7 +14,7 @@ import frame_clases.NewJFrame;
 public class project {
      public static void main(String[] args){
          
-          NewJFrame a=new NewJFrame();
+          LOGIN a=new LOGIN();
          a.setVisible(true);
      }
     

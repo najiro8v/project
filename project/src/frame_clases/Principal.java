@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package frame_clases;
+import project.AL_mascota;
 
 import java.awt.Color;
 import java.io.File;
@@ -24,6 +25,7 @@ import javax.swing.table.TableModel;
  * @author casa
  */
 public class Principal extends javax.swing.JFrame {
+   
     DefaultTableModel modelo2=new DefaultTableModel();
     DefaultTableModel modelo=new DefaultTableModel();
     File archivo;
@@ -37,15 +39,15 @@ public class Principal extends javax.swing.JFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Edad");
         modelo.addColumn("Sexo");
-        modelo.addColumn("Altura");
         modelo.addColumn("Peso");
+        modelo.addColumn("Altura");
         modelo.addColumn("Especie");
         /*************************/
         modelo2.addColumn("Nombre");
         modelo2.addColumn("Edad");
         modelo2.addColumn("Sexo");
-        modelo2.addColumn("Altura");
         modelo2.addColumn("Peso");
+        modelo2.addColumn("Altura");
         modelo2.addColumn("Especie");
         this.setVisible(true);
         initComponents();
@@ -64,7 +66,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tEst21 = new project.TEst2();
+        tEst21 = new project.AL_mascota();
         jPanel1 = new javax.swing.JPanel();
         jOutlookBar1 = new com.l2fprod.common.swing.JOutlookBar();
         jPanel3 = new javax.swing.JPanel();
@@ -423,34 +425,53 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         this.dispose();
-        ADDmascota nuevo=new ADDmascota(jMenu3.getText());
+       ADDmascota nuevo=new ADDmascota(jMenu3.getText());
        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jOutlookBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jOutlookBar1MouseClicked
-      establecer_list();
+        try {
+            establecer_list();
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jOutlookBar1MouseClicked
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        establecer_list();
+        System.out.println("boton lista");
+        try {
+            establecer_list();
+        } catch (IOException ex) {
+           // Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        while(modelo.getRowCount()!=0) {
              modelo.removeRow(0);
             }
-        establecerModelo();
+        System.out.println("boton enfermo");
+       try {
+            establecerModelo();
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         while(modelo2.getRowCount()!=0) {
              modelo2.removeRow(0);
             }
-        establecerModelo1();
+        System.out.println("bton sanos");
+        try {
+            establecerModelo1();
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        NewJFrame regreso=new NewJFrame();
+        LOGIN regreso=new LOGIN();
         regreso.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -526,84 +547,103 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextPane jTextPane1;
-    private project.TEst2 tEst21;
+    private project.AL_mascota tEst21;
     // End of variables declaration//GEN-END:variables
 public void settext(String text)
 {
    jMenu3.setText(text);
 }
-    public void establecer_list(){
-        DefaultListModel temp=new DefaultListModel();
+    public void establecer_list() throws IOException{
+        DefaultListModel temp=new DefaultListModel();/*
         archivo=new File("Users//"+jMenu3.getText());
          try{oop=new ObjectInputStream(new FileInputStream(archivo));
             linaje=(Vector)oop.readObject();
             oop.close();
     }catch(FileNotFoundException e ){}catch(ArrayIndexOutOfBoundsException e){}catch(IOException e){}catch(ClassNotFoundException e){}
-    Dueño next=(Dueño)linaje.get(0);
-    for(int i=0;i<next.getlistalenght();i++ ){
-    temp.addElement(" Nombre : \""+next.getmascotaList(i).getName()+"\"");
-    temp.addElement("                 edad : "+next.getmascotaList(i).getEdad());
-    temp.addElement("                 sexo : "+next.getmascotaList(i).getSexo());
-    temp.addElement("                 Peso : "+next.getmascotaList(i).getPeso());
-    temp.addElement("                 Estatura : "+next.getmascotaList(i).getEstatura());
-    temp.addElement("                 Especie  : "+next.getmascotaList(i).getEspecie());
+    Dueño next=(Dueño)linaje.get(0);*/
+        String t=jMenu3.getText()+".dat";
+      //  System.out.println("1");
+        AL_mascota.CrearFileDueño(new File(t)); 
+       // System.out.println(t);
+        int s=AL_mascota.getNumeroRegistro();
+        //System.out.println("2");
+        //System.out.println(AL_mascota.getNumeroRegistro());
+        for(int i=0;i<s/*next.getlistalenght()*/;i++ ){
+       // System.out.println(AL_mascota.getDueño(i)+"12");    
+    temp.addElement(" Nombre : \""+AL_mascota.getDueño(i).getName()/*next.getmascotaList(i).getName()*/+"\"");
+    temp.addElement("                 edad : "+AL_mascota.getDueño(i).getEdad());//next.getmascotaList(i).getEdad());
+    temp.addElement("                 sexo : "+AL_mascota.getDueño(i).getSexo());//next.getmascotaList(i).getSexo());
+    temp.addElement("                 Peso : "+AL_mascota.getDueño(i).getPeso());//next.getmascotaList(i).getPeso());
+    temp.addElement("                 Estatura : "+AL_mascota.getDueño(i).getEstatura());//next.getmascotaList(i).getEstatura());
+    temp.addElement("                 Especie  : "+AL_mascota.getDueño(i).getEspecie());//next.getmascotaList(i).getEspecie());
     temp.addElement("---------------------------------------------------------------------------------------------------------------------");
-    }jList1.setModel(temp);
+    
+}AL_mascota.cerrar();jList1.setModel(temp);
          
     }
     
-    public void establecerModelo()
+    public void establecerModelo() throws IOException
     {
-       archivo=new File("Users//"+jMenu3.getText());
+       /*archivo=new File("Users//"+jMenu3.getText());
          try{oop=new ObjectInputStream(new FileInputStream(archivo));
             linaje=(Vector)oop.readObject();
             oop.close();
     }catch(FileNotFoundException e ){}catch(ArrayIndexOutOfBoundsException e){}catch(IOException e){}catch(ClassNotFoundException e){}
     Dueño next=(Dueño)linaje.get(0);
-       
+      */
+        String t=jMenu3.getText()+".dat";
+        AL_mascota.CrearFileDueño(new File(t));       
     Object []temp= new Object[6];
-    for(int i=0;i<next.getlistalenght();i++ ){
-    if(next.getmascotaList(i).getEnfermo()==true)
+    for(int i=0;i<AL_mascota.getNumeroRegistro()/*next.getlistalenght()*/;i++ ){
+    if(/*next.getmascotaList(i)*/AL_mascota.getDueño(i).getEnfermo()==true)
         {
-            temp[0]=next.getmascotaList(i).getName();
-            temp[1]=next.getmascotaList(i).getEdad();
-            temp[2]=next.getmascotaList(i).getSexo();
-            temp[3]=next.getmascotaList(i).getPeso();
-            temp[4]=next.getmascotaList(i).getEstatura();
-            temp[5]=next.getmascotaList(i).getEspecie();
+            
+            temp[0]= AL_mascota.getDueño(i).getName();//next.getmascotaList(i).getName();
+            temp[1]=AL_mascota.getDueño(i).getEdad();//next.getmascotaList(i).getEdad();
+            temp[2]=AL_mascota.getDueño(i).getSexo();//next.getmascotaList(i).getSexo();
+            temp[3]=AL_mascota.getDueño(i).getPeso();//next.getmascotaList(i).getPeso();
+            temp[4]=AL_mascota.getDueño(i).getEstatura();//next.getmascotaList(i).getEstatura();
+            temp[5]=AL_mascota.getDueño(i).getEspecie();//next.getmascotaList(i).getEspecie();
+            
             modelo.addRow(temp);
         }
     }
-        jTable1.setModel(modelo);
+        AL_mascota.cerrar();jTable1.setModel(modelo);
     }
     
+  
     
     
     
     
     
-    
-    public void establecerModelo1()
+    public void establecerModelo1() throws IOException
     {
-       archivo=new File("Users//"+jMenu3.getText());
+     /*  archivo=new File("Users//"+jMenu3.getText());
          try{oop=new ObjectInputStream(new FileInputStream(archivo));
             linaje=(Vector)oop.readObject();
             oop.close();
     }catch(FileNotFoundException e ){}catch(ArrayIndexOutOfBoundsException e){}catch(IOException e){}catch(ClassNotFoundException e){}
-    Dueño next=(Dueño)linaje.get(0);
+    Dueño next=(Dueño)linaje.get(0);*/
+    String t=jMenu3.getText()+".dat";
+        AL_mascota.CrearFileDueño(new File(t));  
     Object []temp= new Object[6];
-    for(int i=0;i<next.getlistalenght();i++ ){
-    if(next.getmascotaList(i).getEnfermo()==false)
+    for(int i=0;i<AL_mascota.getNumeroRegistro();i++ ){
+    //for(int i=0;i<next.getlistalenght();i++ ){
+    if(/*next.getmascotaList(i)*/AL_mascota.getDueño(i).getEnfermo()==false)
         {
-            temp[0]=next.getmascotaList(i).getName();
-            temp[1]=next.getmascotaList(i).getEdad();
-            temp[2]=next.getmascotaList(i).getSexo();
-            temp[3]=next.getmascotaList(i).getPeso();
-            temp[4]=next.getmascotaList(i).getEstatura();
-            temp[5]=next.getmascotaList(i).getEspecie();
+            AL_mascota.getDueño(i);
+            temp[0]= AL_mascota.getDueño(i).getName();//next.getmascotaList(i).getName();
+            temp[1]=AL_mascota.getDueño(i).getEdad();//next.getmascotaList(i).getEdad();
+            temp[2]=AL_mascota.getDueño(i).getSexo();//next.getmascotaList(i).getSexo();
+            temp[3]=AL_mascota.getDueño(i).getPeso();//next.getmascotaList(i).getPeso();
+            temp[4]=AL_mascota.getDueño(i).getEstatura();//next.getmascotaList(i).getEstatura();
+            temp[5]=AL_mascota.getDueño(i).getEspecie();//next.getmascotaList(i).getEspecie();
+            
             modelo2.addRow(temp);
         }
     }
-        jTable2.setModel(modelo2);
+       AL_mascota.cerrar();jTable2.setModel(modelo2);
     }
+    
 }
